@@ -1,0 +1,28 @@
+# Consumer-side test of HamiltonHills/pipeline-actions vue/build.
+# Change the ref below to test a different branch or tag.
+name: vue-build-test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: HamiltonHills/pipeline-actions/vue/build@feat/test
+        with:
+          run-lint: 'true'
+          run-tests: 'false'
+          artifact-name: ''
+
+      - name: Build output exists
+        run: test -s dist/index.html
