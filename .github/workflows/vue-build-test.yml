@@ -18,7 +18,8 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: HamiltonHills/pipeline-actions/vue/build@feat/test
+      - uses: HamiltonHills/pipeline-actions/vue/build@vue/v1
+      # - uses: HamiltonHills/pipeline-actions/vue/build@feat/test
         with:
           run-lint: 'true'
           run-tests: 'false'
